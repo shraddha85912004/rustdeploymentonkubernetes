@@ -2,16 +2,9 @@
 FROM rust:1.81-bookworm AS builder
 
 WORKDIR /usr/src/app
-# Copy the manifests
-COPY Cargo.toml ./
+# Copy the manifests and source code
+COPY . .
 
-# Create a dummy src/main.rs to build dependencies
-RUN mkdir src && echo "fn main() {}" > src/main.rs
-RUN cargo build --release
-RUN rm -f target/release/deps/rustdeployment*
-
-# Copy actual source code
-COPY src ./src
 # Build the application
 RUN cargo build --release
 
