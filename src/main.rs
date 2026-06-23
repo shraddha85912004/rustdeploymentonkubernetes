@@ -28,7 +28,7 @@ async fn main() {
     // We can define a custom route for metrics, or just expose what prometheus-exporter provides
     let app = Router::new()
         .route("/health", get(health_check))
-        .route("/metrics", get(move || std::future::ready(handle.render())));
+        .route("/metrics", get(move || async move { handle.render() }));
 
     let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string());
     let addr: SocketAddr = format!("0.0.0.0:{}", port).parse().unwrap();
