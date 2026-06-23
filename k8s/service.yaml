@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rustdeployment-service
+  labels:
+    app: rustdeployment
+spec:
+  type: ClusterIP
+  selector:
+    app: rustdeployment
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP

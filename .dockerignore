@@ -1,0 +1,7 @@
+target/
+**/*.rs.bk
+Cargo.lock
+.git/
+.gitignore
+.github/
+k8s/
