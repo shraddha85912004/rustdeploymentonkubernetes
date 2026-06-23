@@ -1,5 +1,5 @@
 # Build stage
-FROM rust:1.81-bookworm AS builder
+FROM rust:1-bookworm AS builder
 
 WORKDIR /usr/src/app
 # Copy the manifests and source code
